@@ -4,7 +4,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 // CARGAR BASE DE DATOS
 async function cargarBaseDeDatos() {
     try {
-        const respuesta = await fetch('productos.json');
+        const respuesta = await fetch('./productos.json');
         pulseras = await respuesta.json();
 
         // Ejecutar según la página actual
