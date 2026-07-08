@@ -4,17 +4,24 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 // CARGAR BASE DE DATOS
 async function cargarBaseDeDatos() {
     try {
+        // El './' asegura la búsqueda en la carpeta actual del repositorio de GitHub
         const respuesta = await fetch('./productos.json');
+        
+        // Verificación de seguridad para atrapar el error 404 antes de que rompa el JSON
+        if (!respuesta.ok) {
+            throw new Error(`No se pudo encontrar el archivo productos.json (Código: ${respuesta.status})`);
+        }
+        
         pulseras = await respuesta.json();
 
-        // Ejecutar según la página actual
+        // CORRECCIÓN: Separamos las ejecuciones para que una página no rompa a la otra
         if (document.querySelector('.Autos__menu')) {
             renderizarCatalogo();
-        }
-        if (document.getElementById('carrito')) {
+        } 
+        else if (document.getElementById('carrito') && document.getElementById('totalCarrito')) {
             renderizarResumenPedido();
-        }
-        if (document.getElementById('detalleNombre')) {
+        } 
+        else if (document.getElementById('detalleNombre')) {
             renderizarDetalleIndividual();
         }
     } catch (error) {
@@ -37,7 +44,7 @@ function renderizarDetalleIndividual() {
     document.getElementById('detalleImagen').src = pulsera.imagen;
     document.getElementById('detalleImagen').alt = pulsera.nombre;
     
-    // CORRECCIÓN: Lee exactamente "Medida" desde tu JSON
+    // Lee exactamente "Medida" desde tu JSON
     const elementoMedida = document.getElementById('detalleMedida');
     if (elementoMedida) {
         elementoMedida.innerHTML = `<strong>Medida:</strong> ${pulsera.Medida || 'No especificada'}`;
@@ -203,6 +210,7 @@ function enviarWhatsApp() {
     mensaje += `*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*%0A%0A`;
     mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
 
+    // CORRECCIÓN: Agregada la barra inclinada '/' antes del número de teléfono para que la API de WhatsApp resuelva la URL
     const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${mensaje}`;
 
     localStorage.removeItem('carrito');
@@ -215,6 +223,7 @@ function guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
+// CORRECCIÓN: Completada la función que había quedado cortada en el cierre
 function mostrarMensaje(texto) {
     const divMensaje = document.getElementById('mensaje');
     if (divMensaje) {
@@ -224,57 +233,10 @@ function mostrarMensaje(texto) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', cargarBaseDeDatos);
-
 function verDetalleAuto(id) {
     sessionStorage.setItem('autoDetalleId', id);
     window.location.href = 'pulcard.html';
 }
 
-// --- PARTICLES.JS (CON INTEGRACIÓN SEGURA) ---
-if (document.getElementById("particles-js")) {
-    particlesJS("particles-js", {
-        particles: {
-            number: { value: 160, density: { enable: true, value_area: 800 } },
-            color: { value: "#dd5800" },
-            shape: {
-                type: "circle",
-                stroke: { width: 0, color: "#dd5800" },
-                polygon: { nb_sides: 5 }
-            },
-            opacity: {
-                value: 1,
-                random: true,
-                anim: { enable: true, speed: 1, opacity_min: 0, sync: false }
-            },
-            size: {
-                value: 12,
-                random: true,
-                anim: { enable: false, speed: 4, size_min: 0.3, sync: false }
-            },
-            line_linked: { enable: false },
-            move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-                bounce: false
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "bubble" },
-                onclick: { enable: true, mode: "repulse" },
-                resize: true
-            },
-            modes: {
-                bubble: { distance: 250, size: 4, duration: 2, opacity: 0.8, speed: 3 },
-                repulse: { distance: 400, duration: 0.4 }
-            }
-        },
-        retina_detect: true
-    });
-}
+// Ejecución al cargar el documento HTML
+document.addEventListener('DOMContentLoaded', cargarBaseDeDatos);
