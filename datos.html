@@ -14,36 +14,49 @@
     <title>Catálogo</title>
 </head>
 
-<body>
+<body class="autosbody">
     <header>
-        <a href="Autos.html"><img src="flecha-izquierda.png" alt=""></a>
+        <a href="pulseras.html"><img src="flecha-izquierda.png" alt="Volver"></a>
     </header>
 
-    <main id="datosmain">
-        <section class="titulo">
-            <div>
-                <h1>
-                    Ya casi!
-                </h1>
+    <section class="titulo">
+        <div>
+            <h1>Ya casi!</h1>
+        </div>
+    </section>
+
+    <!-- CONTENEDOR PRINCIPAL EN DOS COLUMNAS -->
+    <main class="checkout-container">
+        
+        <!-- COLUMNA IZQUIERDA: RESUMEN DE PRODUCTOS -->
+        <div class="columna-resumen">
+            <h2>Tu Pedido</h2>
+            <div id="carrito">
+                <!-- Aquí JavaScript inyecta las tarjetas 'final-carrito-section' -->
             </div>
-        </section>
-        <section id="datomain">
-            
-            <section class="final-carrito" id="carrito"></section>
-            <div id="totalCarrito">$0</div>
+        </div>
+
+        <!-- COLUMNA DERECHA: FORMULARIO Y TOTAL -->
+        <div class="columna-formulario">
             <div class="cliente">
-                <input type="text" id="clienteNombre" placeholder="Nombre y apellido">
-                <input type="tel" id="clienteTelefono" placeholder="Teléfono">
-                <input type="text" id="clienteProvincia" placeholder="Provincia">
-                <input type="text" id="clienteDireccion" placeholder="Direccion">
+                <div class="total-box">
+                    <p>Monto Estimado</p>
+                    <h2 id="totalCarrito">Total: $0</h2>
+                </div>
+                
+                <input type="text" id="clienteNombre" placeholder="Nombre y apellido" required>
+                <input type="tel" id="clienteTelefono" placeholder="Teléfono" required>
+                <input type="text" id="clienteProvincia" placeholder="Provincia" required>
+                <input type="text" id="clienteDireccion" placeholder="Dirección" required>
+                
                 <button onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
             </div>
-        </section>
+        </div>
+
     </main>
-    <div id="mensaje" class="mensaje"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <div id="mensaje" class="notificacion-flotante"></div>
+    <script src="script.js" defer></script>
 </body>
 
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Corrección: Eliminado el link roto a googleapis e integrado correctamente con preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <title>Detalle de la Pulsera</title>
+</head>
+<body id="detallePulseraBody">
+    <header>
+        <!-- Retorna de forma correcta al catálogo de pulseras -->
+        <a href="pulseras.html"><img src="flecha-izquierda.png" alt="Volver"></a>
+    </header>
+
+    <main class="detalle-pulsera-container">
+        <section class="titulo">
+            <h2 class="teinteresa-card"> ¿Te interesa esta pulsera? </h2>
+        </section>
+
+        <section class="pulsera-detalle-contenido">
+            <img id="detalleImagen" src="" alt="" class="pulsera-detalle-img">
+            
+            <div class="pulsera-detalle-info">
+                <h1 id="detalleNombre">Cargando...</h1>
+                <!-- Corrección: Se cambia el ID y el texto de Potencia a Material -->
+                <p id="detalleMedida"><strong>Medida:</strong> --</p>
+                <p id="detallePrecio"><strong>Precio:</strong> $--</p>
+                <p id="detalleDescripcion" class="pulsera-detalle-desc"></p>
+                
+                <div id="contenedorBotonComprar"></div>
+            </div>
+        </section>
+    <div id="mensaje" class="notificacion-flotante"></div>
+
+    <script src="script.js" defer></script>
+</body>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

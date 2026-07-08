@@ -1,173 +1,53 @@
 [
     {
         "id": 1,
-        "nombre": "Charger Demon",
-        "precio": 100.000,
-        "descripcion": "El Dodge Charger SRT Demon es un automóvil de alto rendimiento fabricado por Dodge. Fue presentado en 2017 como una edición limitada y se destacó por ser el automóvil de producción más rápido en el cuarto de milla. El Demon está equipado con un motor V8 sobrealimentado de 6.2 litros que produce una potencia impresionante, lo que le permite acelerar de 0 a 60 mph en tan solo 2.3 segundos. Además, cuenta con características exclusivas como neumáticos traseros anchos, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Dodge Charger SRT Demon es una verdadera bestia en la carretera y es altamente valorado por los entusiastas de los automóviles deportivos.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/1.jpg"
+        "nombre": "Pulsera Argentina",
+        "precio": 2000,
+        "descripcion": "Hilo elástico y mostacillas",
+        "Medida": "15 cm",
+        "imagen": "Pulsera/1.png"
         
     },
 
     {
         "id": 2,
-        "nombre": "Dodge Charger SRT Hellcat",
-        "precio": 80.000,
-        "descripcion": "El Dodge Charger SRT Hellcat es un automóvil de alto rendimiento fabricado por Dodge. Es una versión más potente del Charger estándar y se destaca por su motor V8 sobrealimentado de 6.2 litros que produce una potencia impresionante. El Hellcat es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 3.6 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Dodge Charger SRT Hellcat es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 707,
-        "imagen": "Autos img/2.jpg"
+        "nombre": "Pulsera blanca con corazón",
+        "precio": 2000,
+        "descripcion": "Hilo elástico y mostacillas",
+        "Medida": "15 cm",
+        "imagen": "Pulsera/2.png"
     },
-
     {
         "id": 3,
-        "nombre": "Dodge Charger SRT Hellcat Redeye",
-        "precio": 90.000,
-        "descripcion": "El Dodge Charger SRT Hellcat Redeye es una versión aún más potente del Charger SRT Hellcat. Está equipado con un motor V8 sobrealimentado de 6.2 litros que produce una potencia impresionante, superando los 700 caballos de fuerza. El Redeye es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 3.4 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Dodge Charger SRT Hellcat Redeye es una opción popular entre los entusiastas de los automóviles deportivos que buscan la máxima potencia y rendimiento.",
-        "caballos_de_fuerza": 707,
-        "imagen": "Autos img/3.jpg"
+        "nombre": "Pulsera celeste con emoji",
+        "precio": 2000,
+        "descripcion": "Hilo elástico y mostacillas",
+        "Medida": "15 cm",
+        "imagen": "Pulsera/3.png"
     },
-
     {
         "id": 4,
-        "nombre": "Chevrolet Camaro ZL1",
-        "precio": 60.000,
-        "descripcion": "El Chevrolet Camaro ZL1 es un automóvil deportivo fabricado por Chevrolet. Es una versión más potente del Camaro estándar y se destaca por su motor V8 sobrealimentado de 6.2 litros que produce una potencia impresionante. El ZL1 es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 3.8 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Chevrolet Camaro ZL1 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/4.jpg"
+        "nombre": "Pulsera verde con emoji",
+        "precio": 2000,
+        "descripcion": "Hilo elástico y mostacillas",
+        "Medida": "15 cm",
+        "imagen": "Pulsera/4.png"
     },
-
     {
         "id": 5,
-        "nombre": "Chevrolet Camaro ZL1 1LE",
-        "precio": 65.000,
-        "descripcion": "El Chevrolet Camaro ZL1 1LE es una versión aún más orientada al rendimiento del Camaro ZL1. Está equipado con el mismo motor V8 sobrealimentado de 6.2 litros que produce una potencia impresionante, pero se enfoca en mejorar su rendimiento en pista. El 1LE cuenta con características exclusivas como suspensión ajustable, frenos de alto rendimiento, neumáticos específicos para pista y un sistema de escape optimizado para mejorar su rendimiento en la pista. Además, el diseño aerodinámico del 1LE ayuda a mejorar su estabilidad a altas velocidades. El Chevrolet Camaro ZL1 1LE es una opción popular entre los entusiastas de los automóviles deportivos que buscan un rendimiento excepcional en la pista.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/5.jpg"
+        "nombre": "Pulsera roja con emoji",
+        "precio": 2000,
+        "descripcion": "Hilo elástico y mostacillas",
+        "Medida": "15 cm",
+        "imagen": "Pulsera/5.png"
     },
     {
         "id": 6,
-        "nombre": "Porshe 911 GT3",
-        "precio": 70.000,
-        "descripcion": "El Porsche 911 GT3 es un automóvil deportivo fabricado por Porsche. Es una versión orientada al rendimiento en pista y se destaca por su diseño aerodinámico y su motor boxer de 3.8 litros que produce una potencia impresionante. El GT3 es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 3.2 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Porsche 911 GT3 es una opción popular entre los entusiastas de los automóviles deportivos que buscan un rendimiento excepcional en la pista.",
-        "caballos_de_fuerza": 520,
-        "imagen": "Autos img/6.jpg"
-    },
-    {
-        "id": 7,
-        "nombre": "Porsche 911 Carrera RS",
-        "precio": 80.000,
-        "descripcion": "El Porsche 911 Carrera RS es una versión aún más orientada al rendimiento en pista del Porsche 911 Carrera. Está equipado con el mismo motor boxer de 3.8 litros que produce una potencia impresionante, pero se enfoca en mejorar su rendimiento en pista. El Carrera RS cuenta con características exclusivas como suspensión ajustable, frenos de alto rendimiento, neumáticos específicos para pista y un sistema de escape optimizado para mejorar su rendimiento en la pista. Además, el diseño aerodinámico del Carrera RS ayuda a mejorar su estabilidad a altas velocidades. El Porsche 911 Carrera RS es una opción popular entre los entusiastas de los automóviles deportivos que buscan un rendimiento excepcional en la pista.",
-        "caballos_de_fuerza": 520,
-        "imagen": "Autos img/7.jpg"
-    },
-
-    {
-        "id": 8,
-        "nombre": "Porsche 911 Turbo S",
-        "precio": 90.000,
-        "descripcion": "El Porsche 911 Turbo S es una versión de alto rendimiento del Porsche 911. Está equipado con un motor boxer de 3.8 litros que produce una potencia impresionante, lo que le permite acelerar de 0 a 60 mph en tan solo 2.6 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Porsche 911 Turbo S es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 650,
-        "imagen": "Autos img/8.jpg"
-    },
-
-    {
-        "id": 9,
-        "nombre": "Nissan Skyline GT-R R34",
-        "precio": 100.000,
-        "descripcion": "El Nissan Skyline GT-R R34 es un automóvil deportivo fabricado por Nissan. Es una versión más potente del Skyline estándar y se destaca por su motor V6 twin-turbo de 2.0 litros que produce una potencia impresionante. El GT-R es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 4.2 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Nissan Skyline GT-R R34 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/9.jpg"
-    },
-
-    {
-        "id": 10,
-        "nombre": "Nissan Skyline GT-R R32",
-        "precio": 80.000,
-        "descripcion": "El Nissan Skyline GT-R R32 es un automóvil deportivo fabricado por Nissan. Es una versión más potente del Skyline estándar y se destaca por su motor V6 twin-turbo de 2.0 litros que produce una potencia impresionante. El GT-R es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 4.5 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Nissan Skyline GT-R R32 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/10.jpg"
-    },
-
-    {
-        "id": 11,
-        "nombre": "Toyota Supra MK4",
-        "precio": 90.000,
-        "descripcion": "El Toyota Supra MK4 es un automóvil deportivo fabricado por Toyota. Es una versión más potente del Supra estándar y se destaca por su motor V6 twin-turbo de 2.0 litros que produce una potencia impresionante. El Supra es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 4.3 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Toyota Supra MK4 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 707,
-        "imagen": "Autos img/11.jpg"
-    },
-
-    {
-        "id": 12,
-        "nombre": "Toyota Supra MK5",
-        "precio": 70.000,
-        "descripcion": "El Toyota Supra MK5 es un automóvil deportivo fabricado por Toyota. Es una versión más potente del Supra estándar y se destaca por su motor de 3.0 litros turboalimentado que produce una potencia impresionante. El Supra es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 3.9 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Toyota Supra MK5 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 707,
-        "imagen": "Autos img/12.jpg"
-    },
-
-    {
-        "id": 13,
-        "nombre": "Mazda RX-7 FD",
-        "precio": 80.000,
-        "descripcion": "El Mazda RX-7 FD es un automóvil deportivo fabricado por Mazda. Es una versión más potente del RX-7 estándar y se destaca por su motor rotativo de 1.3 litros que produce una potencia impresionante. El RX-7 es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 5.0 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Mazda RX-7 FD es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/13.jpg"
-    },
-    {
-        "id": 14,
-        "nombre": "Mazda RX-8",
-        "precio": 60.000,
-        "descripcion": "El Mazda RX-8 es un automóvil deportivo fabricado por Mazda. Es una versión más potente del RX-7 estándar y se destaca por su motor rotativo de 1.3 litros que produce una potencia impresionante. El RX-8 es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 5.5 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Mazda RX-8 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 840,
-        "imagen": "Autos img/14.jpg"
-    },
-    {
-        "id": 15,
-        "nombre": "Subaru Impreza WRX STI",
-        "precio": 70.000,
-        "descripcion": "El Subaru Impreza WRX STI es un automóvil deportivo fabricado por Subaru. Es una versión más potente del Impreza estándar y se destaca por su motor de 2.5 litros turboalimentado que produce una potencia impresionante. El WRX STI es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 4.8 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Subaru Impreza WRX STI es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 707,
-        "imagen": "Autos img/15.jpg"
-    },
-    {
-        "id": 16,
-        "nombre": "Mitsubishi Lancer Evolution X",
-        "precio": 60.000,
-        "descripcion": "El Mitsubishi Lancer Evolution X es un automóvil deportivo fabricado por Mitsubishi. Es una versión más potente del Lancer estándar y se destaca por su motor de 2.0 litros turboalimentado que produce una potencia impresionante. El Lancer Evolution X es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 5.0 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Mitsubishi Lancer Evolution X es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 707,
-        "imagen": "Autos img/16.jpg"
-    },
-    {
-        "id": 17,
-        "nombre": "Mitsubishi Lancer Evolution VIIII",
-        "precio": 50.000,
-        "descripcion": "El Mitsubishi Lancer Evolution VIIII es un automóvil deportivo fabricado por Mitsubishi. Es una versión más potente del Lancer estándar y se destaca por su motor de 2.0 litros turboalimentado que produce una potencia impresionante. El Lancer Evolution VIIII es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 5.5 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Mitsubishi Lancer Evolution VIIII es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 520,
-        "imagen": "Autos img/17.jpg"
-    },
-    {
-        "id": 18,
-        "nombre": "Mustang Shelby GT500",
-        "precio": 55.000,
-        "descripcion": "El Mustang Shelby GT500 es un automóvil deportivo fabricado por Ford. Es una versión más potente del Mustang estándar y se destaca por su motor de 5.0 litros V8 que produce una potencia impresionante. El GT500 es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 3.5 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Mustang Shelby GT500 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 520,
-        "imagen": "Autos img/18.jpg"
-    },
-    {
-        "id": 19,
-        "nombre": "Mustang GT",
-        "precio": 40.000,
-        "descripcion": "El Mustang GT es un automóvil deportivo fabricado por Ford. Es una versión más potente del Mustang estándar y se destaca por su motor de 5.0 litros V8 que produce una potencia impresionante. El GT es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 4.0 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El Mustang GT es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 520,
-        "imagen": "Autos img/19.jpg"
-    },
-    {
-        "id": 20,
-        "nombre": "bmw M3 E92",
-        "precio": 80.000,
-        "descripcion": "El bmw M3 E92 es un automóvil de alto rendimiento fabricado por BMW. Es una versión más potente del M3 estándar y se destaca por su motor de 3.0 litros V6 que produce una potencia impresionante. El E92 es conocido por su capacidad para acelerar de 0 a 60 mph en tan solo 4.1 segundos, lo que lo convierte en uno de los sedanes más rápidos del mercado. Además, cuenta con características exclusivas como frenos de alto rendimiento, suspensión ajustable y un sistema de escape específico para mejorar su rendimiento en pista. El bmw M3 E92 es una opción popular entre los entusiastas de los automóviles deportivos que buscan una combinación de potencia y estilo.",
-        "caballos_de_fuerza": 425,
-        "imagen": "Autos img/20.jpg"
+        "nombre": "Pulsera azul con emoji",
+        "precio": 2000,
+        "descripcion": "Hilo elástico y mostacillas",
+        "Medida": "15 cm",
+        "imagen": "Pulsera/6.png"
     }
+
 ]
