@@ -250,17 +250,17 @@ function enviarWhatsApp() {
         alert('Tu carrito está vacío. Vuelve al catálogo para elegir sus artículos.');
         return;
     }
-     const numeroWhatsApp = "541128884710"; 
-    let mensaje = `*¡Quiero esto!*%0A`;
+     const numeroWhatsApp = "5491128884710"; 
+    let mensaje = `*¡Hola Joaco 😎!*%0A`;
     mensaje += `────────────────────%0A%0A`;
 
     mensaje += `*DATOS DEL COMPRADOR*%0A`;
-    mensaje += `*Me llamo:* ${nombre}%0A`;
-    mensaje += `*Teléfono:* ${telefono}%0A`;
-    mensaje += `*Provincia:* ${provincia}%0A`;
-    mensaje += `*Dirección:* ${direccion}%0A%0A`;
+    mensaje += `*👋Me llamo:* ${nombre}%0A`;
+    mensaje += `*✨️Teléfono:* ${telefono}%0A`;
+    mensaje += `*👀Provincia:* ${provincia}%0A`;
+    mensaje += `*🤗Dirección:* ${direccion}%0A%0A`;
 
-    mensaje += `*DETALLE DE LAS PULSERAS Y COMBOS*%0A`;
+    mensaje += `*🙏Quiero esto por favor🙏*%0A`;
     mensaje += `────────────────────%0A`;
 
     let totalAcumulado = 0;
@@ -277,7 +277,7 @@ function enviarWhatsApp() {
     mensaje += `*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*%0A%0A`;
     mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
 
-    const urlWhatsApp = `https://wa.me{5491128884710}?text=${mensaje}`;
+    const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${mensaje}`;
 
     localStorage.removeItem('carrito');
     carrito = [];
