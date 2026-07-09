@@ -139,7 +139,7 @@ function renderizarResumenPedido() {
                 <div class="auto-info">
                     <h3>${item.nombre} (x${item.cantidad})</h3>
                     <p class="auto-precio"><strong>Total:</strong> $${(item.precio * item.cantidad).toLocaleString('es-AR')}</p>
-                    <button class="btn-quitar" onclick="quitarDelCarrito(${item.id})">Quitar del pedido</button>
+                    <button class="btn-quitar" onclick="quitarDelCarrito(${item.id})"><img src="./borrar.png" alt="Quitar"></button>
                 </div>
             </section>
         `;
