@@ -434,6 +434,11 @@ header img {
     background-color: #FF6B6B;
     color: #FFFFFF;
 }
+.btn-quitar img {
+    width: 14px;
+    height: 14px;
+    filter: invert(98%) saturate(10500%) hue-rotate(340deg) brightness(95%) contrast(105%);
+}
 
 /* --- COLUMNA DE CARGA DE DATOS --- */
 .columna-formulario {
