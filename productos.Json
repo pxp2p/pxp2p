@@ -5,7 +5,7 @@
         "precio": 2000,
         "descripcion": "Hilo elástico y mostacillas",
         "Medida": "15 cm",
-        "imagen": "Pulsera/1.png"
+        "imagen": "./Pulsera/1.png"
         
     },
 

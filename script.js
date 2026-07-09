@@ -211,7 +211,7 @@ function enviarWhatsApp() {
     mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
 
     // CORRECCIÓN: Agregada la barra inclinada '/' antes del número de teléfono para que la API de WhatsApp resuelva la URL
-    const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${mensaje}`;
+    const urlWhatsApp = `https://wa.me/${541128884710}?text=${mensaje}`;
 
     localStorage.removeItem('carrito');
     carrito = [];
