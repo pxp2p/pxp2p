@@ -1,91 +1,138 @@
-let pulseras = [];
+let pulseras = []; // Esta variable contendrá los productos activos de la página actual
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-// CARGAR BASE DE DATOS
+// ==========================================================================
+// 1. CARGAR BASE DE DATOS DINÁMICA (CORREGIDA PARA AMBAS CARDS)
+// ==========================================================================
 async function cargarBaseDeDatos() {
     try {
-        // El './' asegura la búsqueda en la carpeta actual del repositorio de GitHub
-        const respuesta = await fetch('./productos.json');
+        // Por defecto cargamos las pulseras individuales
+        let archivoJSON = './productos.json';
 
-        // Verificación de seguridad para atrapar el error 404 antes de que rompa el JSON
-        if (!respuesta.ok) {
-            throw new Error(`No se pudo encontrar el archivo productos.json (Código: ${respuesta.status})`);
+        // DETECCIÓN AUTOMÁTICA DE BASE DE DATOS SEGÚN LA PÁGINA
+        if (window.location.href.includes('paquetes.html')) {
+            archivoJSON = './paquete.json';
+        } 
+        // CORRECCIÓN: Agregamos explícitamente paqcard.html para que detecte el origen correcto
+        else if (window.location.href.includes('pulcard.html') || window.location.href.includes('paqcard.html')) {
+            const origen = sessionStorage.getItem('origenCatalogo');
+            if (origen === 'paquetes') {
+                archivoJSON = './paquete.json';
+            }
         }
 
+        // Petición al servidor con protección estricta anticaché para GitHub Pages
+        const respuesta = await fetch(`${archivoJSON}?v=${new Date().getTime()}`);
+        
+        if (!respuesta.ok) {
+            throw new Error(`No se pudo encontrar el archivo ${archivoJSON} (Código: ${respuesta.status})`);
+        }
+        
         pulseras = await respuesta.json();
 
-        // CORRECCIÓN: Separamos las ejecuciones para que una página no rompa a la otra
+        // Renderizado selectivo según los elementos estructurales presentes en el HTML
         if (document.querySelector('.Autos__menu')) {
             renderizarCatalogo();
-        }
+        } 
         else if (document.getElementById('carrito') && document.getElementById('totalCarrito')) {
             renderizarResumenPedido();
-        }
+        } 
+        // Se ejecuta si encuentra el contenedor detalleNombre (común en ambas cards)
         else if (document.getElementById('detalleNombre')) {
             renderizarDetalleIndividual();
         }
     } catch (error) {
-        console.error('Error al cargar la base de datos de pulseras:', error);
+        console.error('Error al cargar la base de datos dinámica:', error);
     }
 }
 
-// PARA QUE SE VEA LA CARD INDIVIDUAL (pulcard.html)
+// ==========================================================================
+// 2. DETALLE INDIVIDUAL (SOPORTA INTERFAZ PULCARD.HTML Y PAQCARD.HTML)
+// ==========================================================================
 function renderizarDetalleIndividual() {
-    const idSeleccionado = parseInt(sessionStorage.getItem('autoDetalleId'));
+    const idSeleccionado = parseInt(sessionStorage.getItem('autoDetalleId')); 
     if (!idSeleccionado) {
-        window.location.href = 'pulseras.html';
+        window.location.href = 'index.html'; // Te devuelve al inicio por seguridad si no hay ID
         return;
     }
 
-    const pulsera = pulseras.find(p => p.id === idSeleccionado);
-    if (!pulsera) return;
-
-    document.getElementById('detalleNombre').textContent = pulsera.nombre;
-    document.getElementById('detalleImagen').src = pulsera.imagen;
-    document.getElementById('detalleImagen').alt = pulsera.nombre;
-
-    // Lee exactamente "Medida" desde tu JSON
-    const elementoMedida = document.getElementById('detalleMedida');
-    if (elementoMedida) {
-        elementoMedida.innerHTML = `<strong>Medida:</strong> ${pulsera.Medida || 'No especificada'}`;
+    const producto = pulseras.find(p => p.id === idSeleccionado);
+    if (!producto) {
+        console.error("No se encontró el producto con ID:", idSeleccionado);
+        return;
     }
 
-    document.getElementById('detallePrecio').innerHTML = `<strong>Precio:</strong> $${pulsera.precio.toLocaleString('es-AR')}`;
-    document.getElementById('detalleDescripcion').textContent = pulsera.descripcion;
+    // Inyectamos los datos básicos comunes presentes en ambas fichas técnicas
+    document.getElementById('detalleNombre').textContent = producto.nombre;
+    document.getElementById('detalleImagen').src = producto.imagen;
+    document.getElementById('detalleImagen').alt = producto.nombre;
+    document.getElementById('detallePrecio').innerHTML = `<strong>Precio:</strong> $${producto.precio.toLocaleString('es-AR')}`;
+    document.getElementById('detalleDescripcion').textContent = producto.descripcion;
 
+    // SI LA PÁGINA ABIERTA ES PULCARD.HTML (Busca la propiedad Medida)
+    const elementoMedida = document.getElementById('detalleMedida');
+    if (elementoMedida) {
+        elementoMedida.innerHTML = `<strong>Medida:</strong> ${producto.Medida || 'No especificada'}`;
+    }
+
+    // SI LA PÁGINA ABIERTA ES PAQCARD.HTML (Muestra el bloque de Contenido)
+    const elementoContenido = document.getElementById('detalleContenido');
+    if (elementoContenido) {
+        elementoContenido.innerHTML = `<strong>Contenido:</strong> Combo de Regalo Especial`;
+    }
+
+    // Inyectamos el botón de compra vinculando su ID único
     const contenedorBoton = document.getElementById('contenedorBotonComprar');
     if (contenedorBoton) {
         contenedorBoton.innerHTML = `
-            <button class="btn-agregar" onclick="agregarAlCarrito(${pulsera.id})">Agregar al Pedido</button>
+            <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">Agregar al Pedido</button>
         `;
     }
 }
 
-// MOSTRAR LAS PULSERAS EN EL CATÁLOGO (pulseras.html)
+// ==========================================================================
+// 3. CATÁLOGO GENERAL (INYECTA TARJETAS EN PULSERAS.HTML O PAQUETES.HTML)
+// ==========================================================================
 function renderizarCatalogo() {
-    const menuPulseras = document.querySelector('.Autos__menu');
-    if (!menuPulseras) return;
-    menuPulseras.innerHTML = '';
+    const menuProductos = document.querySelector('.Autos__menu');
+    if (!menuProductos) return;
+    menuProductos.innerHTML = '';
 
-    pulseras.forEach(pulsera => {
+    pulseras.forEach(producto => {
         const articulo = document.createElement('article');
-        articulo.classList.add('auto-tarjeta');
+        articulo.classList.add('auto-tarjeta'); 
         articulo.innerHTML = `
             <section class="Autos__menu__div">
-                <img src="${pulsera.imagen}" alt="${pulsera.nombre}" class="auto-img" onclick="verDetalleAuto(${pulsera.id})" style="cursor: pointer;">
+                <img src="${producto.imagen}" alt="${producto.nombre}" class="auto-img" onclick="verDetalleAuto(${producto.id})" style="cursor: pointer;">
                 <div class="auto-info">
-                    <h3>${pulsera.nombre}</h3>
-                    <p class="auto-hp"><strong>Medida:</strong> ${pulsera.Medida}</p>
-                    <p class="auto-precio"><strong>Precio:</strong> $${pulsera.precio.toLocaleString('es-AR')}</p>
-                    <button class="btn-agregar" onclick="agregarAlCarrito(${pulsera.id})">Agregar al Pedido</button>
+                    <h3>${producto.nombre}</h3>
+                    <p class="auto-hp">${producto.Medida ? `<strong>Medida:</strong> ${producto.Medida}` : producto.descripcion}</p>
+                    <p class="auto-precio"><strong>Precio:</strong> $${producto.precio.toLocaleString('es-AR')}</p>
+                    <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">Agregar al Pedido</button>
                 </div>
             </section>
         `;
-        menuPulseras.appendChild(articulo);
+        menuProductos.appendChild(articulo);
     });
 }
 
-// AGREGAR UNA PULSERA AL CARRITO 
+// VIAJE DEL CATÁLOGO A LA CARD: Elige dinámicamente si redirigir a pulcard.html o paqcard.html
+function verDetalleAuto(id) {
+    sessionStorage.setItem('autoDetalleId', Number(id));
+    
+    // Si la URL actual es la de paquetes, dejamos asentado el origen y mandamos a paqcard.html
+    if (window.location.href.includes('paquetes.html')) {
+        sessionStorage.setItem('origenCatalogo', 'paquetes');
+        window.location.href = 'paqcard.html';
+    } else {
+        sessionStorage.setItem('origenCatalogo', 'pulseras');
+        window.location.href = 'pulcard.html';
+    }
+}
+
+// ==========================================================================
+// 4. LOGICA DEL CARRITO DE COMPRAS Y PERSISTENCIA
+// ==========================================================================
 function agregarAlCarrito(id) {
     const pulseraSeleccionada = pulseras.find(p => p.id === id);
     if (!pulseraSeleccionada) return;
@@ -111,14 +158,13 @@ function agregarAlCarrito(id) {
     }
 }
 
-// VER QUÉ ESTOY COMPRANDO (carrito.html)
 function renderizarResumenPedido() {
     const contenedorCarrito = document.getElementById('carrito');
     const contenedorTotal = document.getElementById('totalCarrito');
     if (!contenedorCarrito) return;
 
     if (carrito.length === 0) {
-        contenedorCarrito.innerHTML = '<p class="carrito-vacio">No elegiste ninguna pulsera todavía.</p>';
+        contenedorCarrito.innerHTML = '<p class="carrito-vacio">No elegiste ningún artículo todavía.</p>';
         if (contenedorTotal) contenedorTotal.textContent = '$0';
         return;
     }
@@ -166,7 +212,13 @@ function quitarDelCarrito(id) {
     renderizarResumenPedido();
 }
 
-// ENVIAR EL MENSAJE POR WHATSAPP
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+// ==========================================================================
+// 5. ENVÍO DEL PEDIDO A WHATSAPP Y MENSAJES FLOTANTES
+// ==========================================================================
 function enviarWhatsApp() {
     const nombre = document.getElementById('clienteNombre').value.trim();
     const telefono = document.getElementById('clienteTelefono').value.trim();
@@ -179,11 +231,10 @@ function enviarWhatsApp() {
     }
 
     if (carrito.length === 0) {
-        alert('Tu carrito está vacío. Vuelve al catálogo para elegir una pulsera.');
+        alert('Tu carrito está vacío. Vuelve al catálogo para elegir sus artículos.');
         return;
     }
-
-    const numeroWhatsApp = "541128884710";
+     const numeroWhatsApp = "541128884710"; 
     let mensaje = `*¡Quiero esto!*%0A`;
     mensaje += `────────────────────%0A%0A`;
 
@@ -193,7 +244,7 @@ function enviarWhatsApp() {
     mensaje += `*Provincia:* ${provincia}%0A`;
     mensaje += `*Dirección:* ${direccion}%0A%0A`;
 
-    mensaje += `*DETALLE DE LAS PULSERAS*%0A`;
+    mensaje += `*DETALLE DE LAS PULSERAS Y COMBOS*%0A`;
     mensaje += `────────────────────%0A`;
 
     let totalAcumulado = 0;
@@ -210,8 +261,7 @@ function enviarWhatsApp() {
     mensaje += `*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*%0A%0A`;
     mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
 
-    // CORRECCIÓN: Agregada la barra inclinada '/' antes del número de teléfono para que la API de WhatsApp resuelva la URL
-    const urlWhatsApp = `https://wa.me/${541128884710}?text=${mensaje}`;
+    const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${mensaje}`;
 
     localStorage.removeItem('carrito');
     carrito = [];
@@ -223,7 +273,6 @@ function guardarCarrito() {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// CORRECCIÓN: Completada la función que había quedado cortada en el cierre
 function mostrarMensaje(texto) {
     const divMensaje = document.getElementById('mensaje');
     if (divMensaje) {
@@ -233,26 +282,21 @@ function mostrarMensaje(texto) {
     }
 }
 
-function verDetalleAuto(id) {
-    sessionStorage.setItem('autoDetalleId', id);
-    window.location.href = 'pulcard.html';
-}
-
-// Ejecución al cargar el documento HTML
-// Al final de tu script.js, maneja las partículas de forma condicionada:
-document.addEventListener('DOMContentLoaded', cargarBaseDeDatos);
-
-// CORRECCIÓN CRÍTICA: Solo se ejecuta si el div de partículas existe en el HTML actual
-if (document.getElementById("particles-js")) {
+// ==========================================================================
+// CONFIGURACIÓN OPTIMIZADA Y SEGURA DE PARTICLES.JS
+// ==========================================================================
+if (typeof particlesJS !== "undefined" && document.getElementById("particles-js")) {
     particlesJS("particles-js", {
         particles: {
-            number: { value: 400, density: { enable: true, value_area: 800 } },
-            color: { value: "#ff6b6b" }, /* Color Coral a juego con la paleta alegre */
+            number: { 
+                value: 150, 
+                density: { enable: true, value_area: 800 } 
+            },
+            color: { value: "#ff6b6b" },
             shape: {
                 type: "circle",
                 stroke: { width: 0, color: "#000000" },
                 polygon: { nb_sides: 5 }
-                // Eliminamos la propiedad 'image' rota para evitar el error 404 en el servidor
             },
             opacity: {
                 value: 1,
@@ -264,22 +308,15 @@ if (document.getElementById("particles-js")) {
                 random: true,
                 anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
             },
-            line_linked: {
-                enable: false,
-                distance: 500,
-                color: "#ffffff",
-                opacity: 0.4,
-                width: 2
-            },
+            line_linked: { enable: false },
             move: {
                 enable: true,
                 speed: 2,
-                direction: "bottom", /* Efecto caída muy lindo para el fondo */
+                direction: "bottom",
                 random: true,
                 straight: true,
                 out_mode: "out",
-                bounce: false,
-                attract: { enable: false, rotateX: 600, rotateY: 1200 }
+                bounce: false
             }
         },
         interactivity: {
@@ -290,15 +327,18 @@ if (document.getElementById("particles-js")) {
                 resize: true
             },
             modes: {
-                grab: { distance: 400, line_linked: { opacity: 0.5 } },
-                bubble: {
-                    distance: 85.26810729164123,
-                    size: 20.301930307533627,
-                    duration: 1.136908097221883,
-                    opacity: 1,
-                    speed: 3
+                grab: { 
+                    distance: 400, 
+                    line_linked: { opacity: 1 } 
                 },
-                repulse: { distance: 200, duration: 0.4 },
+                bubble: { 
+                    distance: 250, 
+                    size: 0, 
+                    duration: 2, 
+                    opacity: 0, 
+                    speed: 3 
+                },
+                repulse: { distance: 400, duration: 0.4 },
                 push: { particles_nb: 4 },
                 remove: { particles_nb: 2 }
             }
@@ -306,3 +346,6 @@ if (document.getElementById("particles-js")) {
         retina_detect: true
     });
 }
+
+// Disparador del arranque de la base de datos al inicializar la ventana
+document.addEventListener('DOMContentLoaded', cargarBaseDeDatos);

@@ -94,6 +94,15 @@ header img {
 #indexbody {
     background-color: #F4F7F6;
 }
+#index__menu__links{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    text-align: center;
+}
 
 #particles-js {
     position: absolute;
@@ -428,6 +437,11 @@ header img {
     font-family: sans-serif;
     font-weight: bold;
     transition: all 0.2s ease;
+}
+.btn-quitar img {
+    width: 14px;
+    height: 14px;
+    filter: invert(98%) saturate(10500%) hue-rotate(340deg) brightness(95%) contrast(105%);
 }
 
 .btn-quitar:hover {

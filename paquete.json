@@ -1,0 +1,30 @@
+[
+    {
+        "id": 101,
+        "nombre": "Paquete especial 1",
+        "precio": 3500,
+        "descripcion": "2 bonobones + 1 pulsera",
+        "imagen": "./paquete/1.png"
+    },
+    {
+        "id": 102,
+        "nombre": "Paquete especial 2",
+        "precio": 3500,
+        "descripcion": "2 bonobones + 1 pulsera",
+        "imagen": "./paquete/2.png"
+    },
+    {
+        "id": 103,
+        "nombre": "Paquete especial 3",
+        "precio": 3500,
+        "descripcion": "2 bonobones + 1 pulsera",
+        "imagen": "./paquete/3.png"
+    },
+    {
+        "id": 104,
+        "nombre": "Paquete especial 4",
+        "precio": 3500,
+        "descripcion": "2 bonobones + 1 pulsera",
+        "imagen": "./paquete/4.png"
+    }
+]

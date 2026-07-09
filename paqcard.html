@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+    <title>Detalle del Combo Especial</title>
+</head>
+<body id="detallePulseraBody">
+    <header>
+        <!-- Importante: Este botón vuelve específicamente al catálogo de paquetes -->
+        <a href="paquetes.html"><img src="flecha-izquierda.png" alt="Volver"></a>
+    </header>
+
+    <main class="detalle-pulsera-container">
+        <section class="titulo">
+            <h2 class="teinteresa-card"> ¿Te interesa este combo de regalo? </h2>
+        </section>
+
+        <section class="pulsera-detalle-contenido">
+            <img id="detalleImagen" src="" alt="" class="pulsera-detalle-img">
+            
+            <div class="pulsera-detalle-info">
+                <h1 id="detalleNombre">Cargando combo...</h1>
+                <!-- Cambiado el ID y el texto para que se adapte a los paquetes -->
+                <p id="detalleContenido"><strong>Contenido:</strong> Incluye bombones</p>
+                <p id="detallePrecio"><strong>Precio:</strong> $--</p>
+                <p id="detalleDescripcion" class="pulsera-detalle-desc"></p>
+                
+                <div id="contenedorBotonComprar"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="mensaje" class="notificacion-flotante"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
