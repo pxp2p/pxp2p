@@ -1,19 +1,17 @@
 let pulseras = []; // Esta variable contendrá los productos activos de la página actual
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+let colorSeleccionadoActual = 'todos'; // Variable global para recordar el filtro activo
 
 // ==========================================================================
-// 1. CARGAR BASE DE DATOS DINÁMICA (CORREGIDA PARA AMBAS CARDS)
+// 1. CARGAR BASE DE DATOS DINÁMICA
 // ==========================================================================
 async function cargarBaseDeDatos() {
     try {
-        // Por defecto cargamos las pulseras individuales
         let archivoJSON = './productos.json';
 
-        // DETECCIÓN AUTOMÁTICA DE BASE DE DATOS SEGÚN LA PÁGINA
         if (window.location.href.includes('paquetes.html')) {
             archivoJSON = './paquete.json';
         } 
-        // CORRECCIÓN: Agregamos explícitamente paqcard.html para que detecte el origen correcto
         else if (window.location.href.includes('pulcard.html') || window.location.href.includes('paqcard.html')) {
             const origen = sessionStorage.getItem('origenCatalogo');
             if (origen === 'paquetes') {
@@ -21,7 +19,6 @@ async function cargarBaseDeDatos() {
             }
         }
 
-        // Petición al servidor con protección estricta anticaché para GitHub Pages
         const respuesta = await fetch(`${archivoJSON}?v=${new Date().getTime()}`);
         
         if (!respuesta.ok) {
@@ -30,14 +27,12 @@ async function cargarBaseDeDatos() {
         
         pulseras = await respuesta.json();
 
-        // Renderizado selectivo según los elementos estructurales presentes en el HTML
         if (document.querySelector('.Autos__menu')) {
-            renderizarCatalogo();
+            renderizarCatalogo('todos'); // Al arrancar, muestra todos los productos
         } 
         else if (document.getElementById('carrito') && document.getElementById('totalCarrito')) {
             renderizarResumenPedido();
         } 
-        // Se ejecuta si encuentra el contenedor detalleNombre (común en ambas cards)
         else if (document.getElementById('detalleNombre')) {
             renderizarDetalleIndividual();
         }
@@ -47,12 +42,12 @@ async function cargarBaseDeDatos() {
 }
 
 // ==========================================================================
-// 2. DETALLE INDIVIDUAL (SOPORTA INTERFAZ PULCARD.HTML Y PAQCARD.HTML)
+// 2. DETALLE INDIVIDUAL (PULCARD Y PAQCARD)
 // ==========================================================================
 function renderizarDetalleIndividual() {
     const idSeleccionado = parseInt(sessionStorage.getItem('autoDetalleId')); 
     if (!idSeleccionado) {
-        window.location.href = 'index.html'; // Te devuelve al inicio por seguridad si no hay ID
+        window.location.href = 'index.html';
         return;
     }
 
@@ -62,26 +57,22 @@ function renderizarDetalleIndividual() {
         return;
     }
 
-    // Inyectamos los datos básicos comunes presentes en ambas fichas técnicas
     document.getElementById('detalleNombre').textContent = producto.nombre;
     document.getElementById('detalleImagen').src = producto.imagen;
     document.getElementById('detalleImagen').alt = producto.nombre;
     document.getElementById('detallePrecio').innerHTML = `<strong>Precio:</strong> $${producto.precio.toLocaleString('es-AR')}`;
     document.getElementById('detalleDescripcion').textContent = producto.descripcion;
 
-    // SI LA PÁGINA ABIERTA ES PULCARD.HTML (Busca la propiedad Medida)
     const elementoMedida = document.getElementById('detalleMedida');
     if (elementoMedida) {
         elementoMedida.innerHTML = `<strong>Medida:</strong> ${producto.Medida || 'No especificada'}`;
     }
 
-    // SI LA PÁGINA ABIERTA ES PAQCARD.HTML (Muestra el bloque de Contenido)
     const elementoContenido = document.getElementById('detalleContenido');
     if (elementoContenido) {
         elementoContenido.innerHTML = `<strong>Contenido:</strong> Combo de Regalo Especial`;
     }
 
-    // Inyectamos el botón de compra vinculando su ID único
     const contenedorBoton = document.getElementById('contenedorBotonComprar');
     if (contenedorBoton) {
         contenedorBoton.innerHTML = `
@@ -91,14 +82,26 @@ function renderizarDetalleIndividual() {
 }
 
 // ==========================================================================
-// 3. CATÁLOGO GENERAL (INYECTA TARJETAS EN PULSERAS.HTML O PAQUETES.HTML)
+// 3. CATÁLOGO GENERAL CON FILTRADO POR COLOR INTEGRADO
 // ==========================================================================
-function renderizarCatalogo() {
+function renderizarCatalogo(colorAFiltrar) {
     const menuProductos = document.querySelector('.Autos__menu');
     if (!menuProductos) return;
     menuProductos.innerHTML = '';
 
-    pulseras.forEach(producto => {
+    // Filtrado inteligente: si es 'todos' muestra todo el JSON, sino compara estrictamente el color
+    let productosAMostrar = pulseras;
+    if (colorAFiltrar !== 'todos') {
+        productosAMostrar = pulseras.filter(producto => producto.color === colorAFiltrar);
+    }
+
+    // Si el filtro no arroja resultados (ej: no hay pulseras rojas cargadas)
+    if (productosAMostrar.length === 0) {
+        menuProductos.innerHTML = '<p class="carrito-vacio" style="color: #6C757D;">No hay productos disponibles en este color por el momento.</p>';
+        return;
+    }
+
+    productosAMostrar.forEach(producto => {
         const articulo = document.createElement('article');
         articulo.classList.add('auto-tarjeta'); 
         articulo.innerHTML = `
@@ -116,11 +119,24 @@ function renderizarCatalogo() {
     });
 }
 
-// VIAJE DEL CATÁLOGO A LA CARD: Elige dinámicamente si redirigir a pulcard.html o paqcard.html
+// Función que ejecutan los botones HTML al hacer clic
+function filtrarPorColor(color) {
+    colorSeleccionadoActual = color;
+    renderizarCatalogo(color);
+
+    // Lógica para mover la clase 'active' al botón presionado
+    const botones = document.querySelectorAll('.btn-filtro');
+    botones.forEach(btn => btn.classList.remove('active'));
+
+    // Buscamos el botón que ejecutó la acción para encenderlo
+    const botonActivo = Array.from(botones).find(btn => btn.getAttribute('onclick').includes(`'${color}'`));
+    if (botonActivo) {
+        botonActivo.classList.add('active');
+    }
+}
+
 function verDetalleAuto(id) {
     sessionStorage.setItem('autoDetalleId', Number(id));
-    
-    // Si la URL actual es la de paquetes, dejamos asentado el origen y mandamos a paqcard.html
     if (window.location.href.includes('paquetes.html')) {
         sessionStorage.setItem('origenCatalogo', 'paquetes');
         window.location.href = 'paqcard.html';
@@ -131,7 +147,7 @@ function verDetalleAuto(id) {
 }
 
 // ==========================================================================
-// 4. LOGICA DEL CARRITO DE COMPRAS Y PERSISTENCIA
+// 4. LOGICA DEL CARRITO DE COMPRAS
 // ==========================================================================
 function agregarAlCarrito(id) {
     const pulseraSeleccionada = pulseras.find(p => p.id === id);
@@ -146,6 +162,7 @@ function agregarAlCarrito(id) {
             id: pulseraSeleccionada.id,
             nombre: pulseraSeleccionada.nombre,
             precio: pulseraSeleccionada.precio,
+            imagen: pulseraSeleccionada.imagen, 
             cantidad: 1
         });
     }
@@ -173,8 +190,7 @@ function renderizarResumenPedido() {
     let totalAcumulado = 0;
 
     carrito.forEach(item => {
-        const datosCompletosPulsera = pulseras.find(p => p.id === item.id);
-        const imagen = datosCompletosPulsera ? datosCompletosPulsera.imagen : 'Pulsera/default.png';
+        let imagen = item.imagen ? item.imagen : 'Pulsera/default.png';
 
         const articulo = document.createElement('article');
         articulo.classList.add('auto-tarjeta', 'auto-tarjeta-resumen');

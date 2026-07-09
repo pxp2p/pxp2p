@@ -5,16 +5,16 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"blanco",
         "imagen": "./Pulsera/1.png"
-        
     },
-
     {
         "id": 2,
         "nombre": "Pulsera blanca con dije de corazón",
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"blanco",
         "imagen": "Pulsera/2.png"
     },
     {
@@ -23,6 +23,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"celeste",
         "imagen": "Pulsera/3.png"
     },
     {
@@ -31,6 +32,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"verde",
         "imagen": "Pulsera/4.png"
     },
     {
@@ -39,6 +41,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"rojo",
         "imagen": "Pulsera/5.png"
     },
     {
@@ -47,6 +50,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"azul",
         "imagen": "Pulsera/6.png"
     },
     {
@@ -55,6 +59,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"blanco",
         "imagen": "Pulsera/7.png"
     },
     {
@@ -63,6 +68,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"verde",
         "imagen": "Pulsera/8.png"
     },
     {
@@ -71,6 +77,7 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"azul",
         "imagen": "Pulsera/9.png"
     },
     {
@@ -79,6 +86,34 @@
         "precio": 2000,
         "descripcion": "Tanza elástica y mostacillas",
         "Medida": "15 cm",
+        "color":"blanco",
         "imagen": "Pulsera/10.png"
+    },
+    {
+        "id": 11,
+        "nombre": "Pulsera roja y azul con emoji",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"rojo",
+        "imagen": "Pulsera/11.png"
+    },
+    {
+        "id": 12,
+        "nombre": "Pulsera verde y azul con emoji",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"verde",
+        "imagen": "Pulsera/12.png"
+    },
+    {
+        "id": 13,
+        "nombre": "Pulsera roja y blanca con emoji",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"rojo",
+        "imagen": "Pulsera/13.png"
     }
 ]
