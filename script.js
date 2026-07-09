@@ -6,21 +6,21 @@ async function cargarBaseDeDatos() {
     try {
         // El './' asegura la búsqueda en la carpeta actual del repositorio de GitHub
         const respuesta = await fetch('./productos.json');
-        
+
         // Verificación de seguridad para atrapar el error 404 antes de que rompa el JSON
         if (!respuesta.ok) {
             throw new Error(`No se pudo encontrar el archivo productos.json (Código: ${respuesta.status})`);
         }
-        
+
         pulseras = await respuesta.json();
 
         // CORRECCIÓN: Separamos las ejecuciones para que una página no rompa a la otra
         if (document.querySelector('.Autos__menu')) {
             renderizarCatalogo();
-        } 
+        }
         else if (document.getElementById('carrito') && document.getElementById('totalCarrito')) {
             renderizarResumenPedido();
-        } 
+        }
         else if (document.getElementById('detalleNombre')) {
             renderizarDetalleIndividual();
         }
@@ -31,7 +31,7 @@ async function cargarBaseDeDatos() {
 
 // PARA QUE SE VEA LA CARD INDIVIDUAL (pulcard.html)
 function renderizarDetalleIndividual() {
-    const idSeleccionado = parseInt(sessionStorage.getItem('autoDetalleId')); 
+    const idSeleccionado = parseInt(sessionStorage.getItem('autoDetalleId'));
     if (!idSeleccionado) {
         window.location.href = 'pulseras.html';
         return;
@@ -43,13 +43,13 @@ function renderizarDetalleIndividual() {
     document.getElementById('detalleNombre').textContent = pulsera.nombre;
     document.getElementById('detalleImagen').src = pulsera.imagen;
     document.getElementById('detalleImagen').alt = pulsera.nombre;
-    
+
     // Lee exactamente "Medida" desde tu JSON
     const elementoMedida = document.getElementById('detalleMedida');
     if (elementoMedida) {
         elementoMedida.innerHTML = `<strong>Medida:</strong> ${pulsera.Medida || 'No especificada'}`;
     }
-    
+
     document.getElementById('detallePrecio').innerHTML = `<strong>Precio:</strong> $${pulsera.precio.toLocaleString('es-AR')}`;
     document.getElementById('detalleDescripcion').textContent = pulsera.descripcion;
 
@@ -69,7 +69,7 @@ function renderizarCatalogo() {
 
     pulseras.forEach(pulsera => {
         const articulo = document.createElement('article');
-        articulo.classList.add('auto-tarjeta'); 
+        articulo.classList.add('auto-tarjeta');
         articulo.innerHTML = `
             <section class="Autos__menu__div">
                 <img src="${pulsera.imagen}" alt="${pulsera.nombre}" class="auto-img" onclick="verDetalleAuto(${pulsera.id})" style="cursor: pointer;">
@@ -105,7 +105,7 @@ function agregarAlCarrito(id) {
 
     guardarCarrito();
     mostrarMensaje(`¡${pulseraSeleccionada.nombre} agregada al pedido!`);
-    
+
     if (document.getElementById('carrito')) {
         renderizarResumenPedido();
     }
@@ -183,7 +183,7 @@ function enviarWhatsApp() {
         return;
     }
 
-    const numeroWhatsApp = "541128884710"; 
+    const numeroWhatsApp = "541128884710";
     let mensaje = `*¡Quiero esto!*%0A`;
     mensaje += `────────────────────%0A%0A`;
 
@@ -240,3 +240,64 @@ function verDetalleAuto(id) {
 
 // Ejecución al cargar el documento HTML
 document.addEventListener('DOMContentLoaded', cargarBaseDeDatos);
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 400, density: { enable: true, value_area: 800 } },
+        color: { value: "#ff6b6b" },
+        shape: {
+            type: "circle",
+            stroke: { width: 0, color: "#000000" },
+            polygon: { nb_sides: 5 },
+            image: { src: "img/github.svg", width: 100, height: 100 }
+        },
+        opacity: {
+            value: 1,
+            random: true,
+            anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
+        },
+        size: {
+            value: 10,
+            random: true,
+            anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
+        },
+        line_linked: {
+            enable: false,
+            distance: 500,
+            color: "#ffffff",
+            opacity: 0.4,
+            width: 2
+        },
+        move: {
+            enable: true,
+            speed: 2,
+            direction: "bottom",
+            random: true,
+            straight: true,
+            out_mode: "out",
+            bounce: false,
+            attract: { enable: false, rotateX: 600, rotateY: 1200 }
+        }
+    },
+    interactivity: {
+        detect_on: "canvas",
+        events: {
+            onhover: { enable: true, mode: "bubble" },
+            onclick: { enable: true, mode: "repulse" },
+            resize: true
+        },
+        modes: {
+            grab: { distance: 400, line_linked: { opacity: 0.5 } },
+            bubble: {
+                distance: 85.26810729164123,
+                size: 20.301930307533627,
+                duration: 1.136908097221883,
+                opacity: 1,
+                speed: 3
+            },
+            repulse: { distance: 200, duration: 0.4 },
+            push: { particles_nb: 4 },
+            remove: { particles_nb: 2 }
+        }
+    },
+    retina_detect: true
+});
