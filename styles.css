@@ -6,14 +6,16 @@
     padding: 0;
     text-decoration: none;
     list-style: none;
-    color: #2B2D42; /* Azul noche oscuro para una lectura limpia y moderna */
+    color: #2B2D42;
+    /* Azul noche oscuro para una lectura limpia y moderna */
     font-family: "Zen Dots", sans-serif;
-    box-sizing: border-box; /* Previene que los elementos desborden la pantalla */
+    box-sizing: border-box;
+    /* Previene que los elementos desborden la pantalla */
 }
 
 body {
     background-color: #F4F7F6;
-    
+
 }
 
 /* ==========================================================================
@@ -23,19 +25,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFFFFF; 
-    border-bottom: solid 3px #4EA8DE; /* Línea azul cielo vibrante */
+    background-color: #FFFFFF;
+    border-bottom: solid 3px #4EA8DE;
+    /* Línea azul cielo vibrante */
     box-shadow: 0px 4px 15px rgba(78, 168, 222, 0.1);
     background-image: url(./Pulsera/a.jpg);
     background-size: 40%;
-    background-position:center;
+    background-position: center;
 }
 
 .titulo h1 {
     font-size: 38px;
     font-weight: 900;
-    color: #EE5253;
-    text-shadow: 0px 0px 10px #ffffff;
+    color: #fff;
+    text-shadow: 0px 0px 10px #0000;
     text-align: center;
 }
 
@@ -62,7 +65,7 @@ header img {
     position: fixed;
     bottom: 90px;
     right: 20px;
-    background-color: #2B2D42; 
+    background-color: #2B2D42;
     color: #FFFFFF;
     padding: 14px 20px;
     border-radius: 10px;
@@ -72,14 +75,14 @@ header img {
     z-index: 9999;
     opacity: 0;
     transform: translateY(20px);
-    pointer-events: none; 
+    pointer-events: none;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .notificacion-flotante.mostrar {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto; 
+    pointer-events: auto;
 }
 
 /* ==========================================================================
@@ -124,7 +127,7 @@ header img {
     box-shadow: 0px 5px 15px rgba(78, 168, 222, 0.15);
     transition: all .2s ease;
     font-size: 22px;
-    z-index: 9999; 
+    z-index: 9999;
 }
 
 .index__menu a:hover {
@@ -160,15 +163,17 @@ header img {
     gap: 15px;
     transition: all .25s ease;
     border-radius: 20px;
-    border: solid 1px #E2E8F0; 
+    border: solid 1px #E2E8F0;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.02);
-    background-color: #FFFFFF; /* Aísla tu foto perfectamente con fondo blanco */
-    width: 340px; 
+    background-color: #FFFFFF;
+    /* Aísla tu foto perfectamente con fondo blanco */
+    width: 340px;
 }
 
 .Autos__menu__div:hover {
     transform: translateY(-6px);
-    box-shadow: 0px 12px 30px rgba(255, 107, 107, 0.15); /* Aura coral suave */
+    box-shadow: 0px 12px 30px rgba(255, 107, 107, 0.15);
+    /* Aura coral suave */
     border-color: #FF6B6B;
 }
 
@@ -182,8 +187,8 @@ header img {
 /* Foto contenida de la pulsera */
 .auto-img {
     width: 100%;
-    height: 260px; 
-    object-fit: contain; 
+    height: 260px;
+    object-fit: contain;
     background-color: #FFFFFF;
     border-radius: 12px;
     transition: transform 0.3s ease;
@@ -215,15 +220,16 @@ header img {
 
 .auto-precio {
     font-size: 24px;
-    color: #4EA8DE; /* Precio destacado en azul */
+    color: #4EA8DE;
+    /* Precio destacado en azul */
     font-weight: bold;
 }
 
 /* Botón Coral dinámico */
 .btn-agregar {
     padding: 12px 25px;
-    background-color: #FF6B6B; 
-    color: #FFFFFF; 
+    background-color: #FF6B6B;
+    color: #FFFFFF;
     border: none;
     border-radius: 10px;
     font-size: 14px;
@@ -241,7 +247,7 @@ header img {
 /* Botón flotante para ir al checkout */
 .btn-finalizar {
     padding: 12px 25px;
-    background-color: #2B2D42; 
+    background-color: #FF6B6B;
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
@@ -251,13 +257,13 @@ header img {
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     position: fixed;
     z-index: 9999;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
 }
 
 .btn-finalizar:hover {
     transform: scale(1.03);
-    background-color: #1D1E2C;
+    background-color: #1f6fa0;
 }
 
 /* ==========================================================================
@@ -268,9 +274,9 @@ header img {
 }
 
 .teinteresa-card {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 400;
-    color: #6C757D; 
+    color: #E2E8F0;
     text-align: center;
     margin: 30px 20px 10px 20px;
 }
@@ -306,7 +312,7 @@ header img {
     padding: 40px;
     border-radius: 20px;
     border: solid 1px #E2E8F0;
-    box-shadow: 0px 4px 20px rgba(0,0,0,0.005);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.005);
 }
 
 .pulsera-detalle-info h1 {
@@ -316,7 +322,7 @@ header img {
 
 #detallePrecio {
     font-size: 32px;
-    color: #4EA8DE; 
+    color: #4EA8DE;
     font-weight: bold;
 }
 
@@ -389,7 +395,8 @@ header img {
 }
 
 .final-carrito-section .auto-info {
-    align-items: flex-start; /* Fuerza los textos a la izquierda en el resumen */
+    align-items: flex-start;
+    /* Fuerza los textos a la izquierda en el resumen */
     gap: 6px;
     width: 100%;
 }
@@ -428,7 +435,8 @@ header img {
 /* --- COLUMNA DE CARGA DE DATOS --- */
 .columna-formulario {
     flex: 0.9;
-    position: sticky; /* Sigue la pantalla si la lista de la izquierda es larga */
+    position: sticky;
+    /* Sigue la pantalla si la lista de la izquierda es larga */
     top: 40px;
 }
 
@@ -455,30 +463,34 @@ header img {
 
 .total-box p {
     font-size: 12px;
-color: #6C757D;
-margin-bottom: 5px;
+    color: #6C757D;
+    margin-bottom: 5px;
 }
+
 #totalCarrito {
     font-size: 24px;
     color: #2B2D42;
     font-weight: bold;
 }
+
 .cliente input {
     padding: 14px 18px;
     border: solid 1px #E2E8F0;
-    border-radius: 10px
-    ;width: 100%;
+    border-radius: 10px;
+    width: 100%;
     font-family: sans-serif;
     font-size: 14px;
     background-color: #F8FAFC;
     transition: all 0.2s ease;
 }
+
 .cliente input:focus {
     outline: none;
     border-color: #4EA8DE;
     background-color: #FFFFFF;
     box-shadow: 0px 0px 0px 4px rgba(78, 168, 222, 0.12);
 }
+
 /* Botón de acción para WhatsApp */
 .cliente button {
     padding: 16px 20px;
@@ -494,56 +506,72 @@ margin-bottom: 5px;
     box-shadow: 0px 6px 15px rgba(255, 107, 107, 0.2);
     margin-top: 5px;
 }
+
 .cliente button:hover {
     background-color: #EE5253;
     transform: translateY(-2px);
     box-shadow: 0px 8px 20px rgba(255, 107, 107, 0.35);
 }
- @media (max-width: 992px) {
+
+@media (max-width: 992px) {
     .titulo h1 {
         font-size: 32px;
     }
+
     .pulsera-detalle-contenido {
         gap: 40px;
     }
+
     #detalleImagen {
         width: 50%;
     }
+
     .pulsera-detalle-info {
         width: 50%;
         padding: 30px;
     }
 }
+
 @media (max-width: 850px) {
+
     /* El checkout pasa de 2 columnas horizontales a 1 columna vertical */
     .checkout-container {
         flex-direction: column;
         gap: 30px;
     }
-    .columna-resumen, .columna-formulario {
+
+    .columna-resumen,
+    .columna-formulario {
         width: 100%;
         flex: none;
     }
+
     .columna-formulario {
-        position: static; /* Desactiva el comportamiento pegajoso en móviles */
+        position: static;
+        /* Desactiva el comportamiento pegajoso en móviles */
     }
 }
+
 @media (max-width: 768px) {
     .titulo div {
         padding: 15px;
         margin-top: 40px;
     }
+
     .titulo h1 {
         font-size: 24px;
     }
+
     .Autos__menu {
         gap: 20px;
         padding: 20px 10px;
     }
+
     .Autos__menu__div {
         width: 100%;
         max-width: 320px;
     }
+
     /* Vista de detalle adaptada en vertical para celulares */
     .pulsera-detalle-contenido {
         flex-direction: column;
@@ -551,26 +579,32 @@ margin-bottom: 5px;
         margin-top: 15px;
         gap: 20px;
     }
+
     #detalleImagen {
         width: 100%;
         max-height: 320px;
     }
+
     .pulsera-detalle-info {
         width: 100%;
         padding: 20px;
     }
+
     .pulsera-detalle-info h1 {
         font-size: 24px;
     }
+
     .final-carrito-section {
         flex-direction: column;
         text-align: center;
     }
+
     .btn-finalizar {
         font-size: 14px;
         bottom: 15px;
         right: 15px;
     }
+
     .notificacion-flotante {
         left: 20px;
         bottom: 80px;
