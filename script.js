@@ -5,7 +5,7 @@ let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 async function cargarBaseDeDatos() {
     try {
         // El './' asegura la búsqueda en la carpeta actual del repositorio de GitHub
-        const respuesta = await fetch('./productos.Json');
+        const respuesta = await fetch('./productos.json');
         
         // Verificación de seguridad para atrapar el error 404 antes de que rompa el JSON
         if (!respuesta.ok) {
