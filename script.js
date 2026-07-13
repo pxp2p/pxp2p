@@ -251,7 +251,6 @@ function enviarWhatsApp() {
         return;
     }
 
-    const numeroWhatsApp = "541128884710"; 
     
     // El mensaje se escribe de forma natural y limpia
     let mensaje = `*¡Hola Joaco 😎!*
@@ -285,7 +284,7 @@ function enviarWhatsApp() {
 _Pedido generado automáticamente desde la web del catálogo._`;
 
     // CORRECCIÓN: Se agrega la "/" y se codifica el texto de forma segura
-    const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    const urlWhatsApp = `https://wa.me/5491128884710?text=${mensaje}`;
 
     // Limpieza de datos guardados
     localStorage.removeItem('carrito');
