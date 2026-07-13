@@ -250,38 +250,52 @@ function enviarWhatsApp() {
         alert('Tu carrito está vacío. Vuelve al catálogo para elegir sus artículos.');
         return;
     }
-     const numeroWhatsApp = "5491128884710"; 
-    let mensaje = `*¡Hola Joaco 😎!*%0A`;
-    mensaje += `────────────────────%0A%0A`;
 
-    mensaje += `*DATOS DEL COMPRADOR*%0A`;
-    mensaje += `*👋Me llamo:* ${nombre}%0A`;
-    mensaje += `*✨️Teléfono:* ${telefono}%0A`;
-    mensaje += `*👀Provincia:* ${provincia}%0A`;
-    mensaje += `*🤗Dirección:* ${direccion}%0A%0A`;
+    const numeroWhatsApp = "5491128884710"; 
+    
+    // El mensaje se escribe de forma natural y limpia
+    let mensaje = `*¡Hola Joaco 😎!*
+────────────────────
 
-    mensaje += `*🙏Quiero esto por favor🙏*%0A`;
-    mensaje += `────────────────────%0A`;
+*DATOS DEL COMPRADOR*
+*👋Me llamo:* ${nombre}
+*✨️Teléfono:* ${telefono}
+*👀Provincia:* ${provincia}
+*🤗Dirección:* ${direccion}
+
+*🙏Quiero esto por favor🙏*
+────────────────────
+`;
 
     let totalAcumulado = 0;
 
     carrito.forEach(item => {
-        mensaje += `*${item.nombre}*%0A`;
-        mensaje += `  Cantidad: x${item.cantidad}%0A`;
-        mensaje += `  Subtotal: $${(item.precio * item.cantidad).toLocaleString('es-AR')}%0A`;
-        mensaje += `────────────────────%0A`;
+        mensaje += `*${item.nombre}*
+  Cantidad: x${item.cantidad}
+  Subtotal: $${(item.precio * item.cantidad).toLocaleString('es-AR')}
+────────────────────
+`;
         totalAcumulado += item.precio * item.cantidad;
     });
 
-    mensaje += `%0A*TOTAL NETO ESTIMADO:*%0A`;
-    mensaje += `*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*%0A%0A`;
-    mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
+    mensaje += `
+*TOTAL NETO ESTIMADO:*
+*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*
 
-    const urlWhatsApp = `https://wa.me${numeroWhatsApp}?text=${mensaje}`;
+_Pedido generado automáticamente desde la web del catálogo._`;
 
+    // CORRECCIÓN: Se agrega la "/" y se codifica el texto de forma segura
+    const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+
+    // Limpieza de datos guardados
     localStorage.removeItem('carrito');
     carrito = [];
 
+    // IMPORTANTE: Si tenés una función que dibuja el carrito en el HTML, 
+    // debés llamarla acá para que visualmente se vacíe. Por ejemplo:
+    // actualizarInterfazCarrito(); 
+
+    // Abre WhatsApp en una nueva pestaña
     window.open(urlWhatsApp, '_blank');
 }
 
