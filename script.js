@@ -251,7 +251,7 @@ function enviarWhatsApp() {
         return;
     }
 
-    const numeroWhatsApp = "5491128884710"; 
+    const numeroWhatsApp = "541128884710"; 
     
     // El mensaje se escribe de forma natural y limpia
     let mensaje = `*¡Hola Joaco 😎!*
