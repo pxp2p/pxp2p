@@ -253,35 +253,31 @@ function enviarWhatsApp() {
 
     
     // El mensaje se escribe de forma natural y limpia
-    let mensaje = `*¡Hola Joaco 😎!*
-────────────────────
+  let mensaje = `*¡Hola Joaco 😎!*%0A`;
+mensaje += `----------------------------------------%0A%0A`;
 
-*DATOS DEL COMPRADOR*
-*👋Me llamo:* ${nombre}
-*✨️Teléfono:* ${telefono}
-*👀Provincia:* ${provincia}
-*🤗Dirección:* ${direccion}
+mensaje += `*DATOS DEL COMPRADOR*%0A`;
+mensaje += `*👋 Me llamo:* ${nombre}%0A`;
+mensaje += `*✨ Teléfono:* ${telefono}%0A`;
+mensaje += `*👀 Provincia:* ${provincia}%0A`;
+mensaje += `*🤗 Dirección:* ${direccion}%0A%0A`;
 
-*🙏Quiero esto por favor🙏*
-────────────────────
-`;
+mensaje += `*🙏 Quiero esto por favor 🙏*%0A`;
+mensaje += `----------------------------------------%0A`;
 
-    let totalAcumulado = 0;
+let totalAcumulado = 0;
 
-    carrito.forEach(item => {
-        mensaje += `*${item.nombre}*
-  Cantidad: x${item.cantidad}
-  Subtotal: $${(item.precio * item.cantidad).toLocaleString('es-AR')}
-────────────────────
-`;
-        totalAcumulado += item.precio * item.cantidad;
-    });
+carrito.forEach(item => {
+    mensaje += `*${item.nombre}*%0A`;
+    mensaje += `  Cantidad: x${item.cantidad}%0A`;
+    mensaje += `  Subtotal: $${(item.precio * item.cantidad).toLocaleString('es-AR')}%0A`;
+    mensaje += `----------------------------------------%0A`;
+    totalAcumulado += item.precio * item.cantidad;
+});
 
-    mensaje += `
-*TOTAL NETO ESTIMADO:*
-*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*
-
-_Pedido generado automáticamente desde la web del catálogo._`;
+mensaje += `%0A*TOTAL NETO ESTIMADO:*%0A`;
+mensaje += `*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*%0A%0A`;
+mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
 
     // CORRECCIÓN: Se agrega la "/" y se codifica el texto de forma segura
     const urlWhatsApp = `https://wa.me/5491128884710?text=${mensaje}`;
