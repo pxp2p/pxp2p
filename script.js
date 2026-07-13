@@ -277,7 +277,7 @@ function enviarWhatsApp() {
     mensaje += `*--- $${totalAcumulado.toLocaleString('es-AR')} ARS ---*%0A%0A`;
     mensaje += `_Pedido generado automáticamente desde la web del catálogo._`;
 
-    const urlWhatsApp = `https://wa.me{numeroWhatsApp}?text=${mensaje}`;
+    const urlWhatsApp = `https://wa.me${numeroWhatsApp}?text=${mensaje}`;
 
     localStorage.removeItem('carrito');
     carrito = [];
