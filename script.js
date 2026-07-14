@@ -237,11 +237,10 @@ function guardarCarrito() {
 // ==========================================================================
 function enviarWhatsApp() {
     const nombre = document.getElementById('clienteNombre').value.trim();
-    const telefono = document.getElementById('clienteTelefono').value.trim();
     const provincia = document.getElementById('clienteProvincia').value.trim();
     const direccion = document.getElementById('clienteDireccion').value.trim();
 
-    if (!nombre || !telefono || !provincia || !direccion) {
+    if (!nombre || !provincia || !direccion) {
         alert('Por favor, completa todos los campos del formulario antes de enviar.');
         return;
     }
@@ -258,9 +257,8 @@ mensaje += `----------------------------------------%0A%0A`;
 
 mensaje += `*DATOS DEL COMPRADOR*%0A`;
 mensaje += `*👋 Me llamo:* ${nombre}%0A`;
-mensaje += `*✨ Teléfono:* ${telefono}%0A`;
-mensaje += `*👀 Provincia:* ${provincia}%0A`;
-mensaje += `*🤗 Dirección:* ${direccion}%0A%0A`;
+mensaje += `*👀 Soy de:* ${provincia}%0A`;
+mensaje += `*🤗 Vivo en:* ${direccion}%0A%0A`;
 
 mensaje += `*🙏 Quiero esto por favor 🙏*%0A`;
 mensaje += `----------------------------------------%0A`;
@@ -307,70 +305,6 @@ function mostrarMensaje(texto) {
     }
 }
 
-// ==========================================================================
-// CONFIGURACIÓN OPTIMIZADA Y SEGURA DE PARTICLES.JS
-// ==========================================================================
-if (typeof particlesJS !== "undefined" && document.getElementById("particles-js")) {
-    particlesJS("particles-js", {
-        particles: {
-            number: { 
-                value: 150, 
-                density: { enable: true, value_area: 800 } 
-            },
-            color: { value: "#ff6b6b" },
-            shape: {
-                type: "circle",
-                stroke: { width: 0, color: "#000000" },
-                polygon: { nb_sides: 5 }
-            },
-            opacity: {
-                value: 1,
-                random: true,
-                anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false }
-            },
-            size: {
-                value: 10,
-                random: true,
-                anim: { enable: false, speed: 40, size_min: 0.1, sync: false }
-            },
-            line_linked: { enable: false },
-            move: {
-                enable: true,
-                speed: 2,
-                direction: "bottom",
-                random: true,
-                straight: true,
-                out_mode: "out",
-                bounce: false
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: { enable: true, mode: "bubble" },
-                onclick: { enable: true, mode: "repulse" },
-                resize: true
-            },
-            modes: {
-                grab: { 
-                    distance: 400, 
-                    line_linked: { opacity: 1 } 
-                },
-                bubble: { 
-                    distance: 250, 
-                    size: 0, 
-                    duration: 2, 
-                    opacity: 0, 
-                    speed: 3 
-                },
-                repulse: { distance: 400, duration: 0.4 },
-                push: { particles_nb: 4 },
-                remove: { particles_nb: 2 }
-            }
-        },
-        retina_detect: true
-    });
-}
 
 // Disparador del arranque de la base de datos al inicializar la ventana
 document.addEventListener('DOMContentLoaded', cargarBaseDeDatos);
