@@ -569,6 +569,11 @@ header img {
     transform: translateY(-2px);
     box-shadow: 0px 8px 20px rgba(255, 107, 107, 0.35);
 }
+.time-venta{
+   text-align:center;
+   color:#a1a1a1;
+   font-weight:100;
+}
 
 @media (max-width: 992px) {
     .titulo h1 {
