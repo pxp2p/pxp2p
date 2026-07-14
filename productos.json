@@ -115,5 +115,59 @@
         "Medida": "15 cm",
         "color":"rojo",
         "imagen": "Pulsera/13.png"
+    },
+    {
+        "id": 14,
+        "nombre": "Pulsera roja con dije de corazón",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"rojo",
+        "imagen": "Pulsera/14.png"
+    },
+    {
+        "id": 15,
+        "nombre": "Pulsera celeste con dije de corazón",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"celeste",
+        "imagen": "Pulsera/15.png"
+    },
+    {
+        "id": 16,
+        "nombre": "Pulsera verde con dije de corazón",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"verde",
+        "imagen": "Pulsera/16.png"
+    },
+    {
+        "id": 17,
+        "nombre": "Pulsera roja con dije de estrella",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"rojo",
+        "imagen": "Pulsera/17.png"
+    },
+    {
+        "id": 18,
+        "nombre": "Pulsera Argentina",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"celeste",
+        "imagen": "Pulsera/18.png"
+    },
+    {
+        "id": 19,
+        "nombre": "Pulsera azul con dije de corazón",
+        "precio": 2000,
+        "descripcion": "Tanza elástica y mostacillas",
+        "Medida": "15 cm",
+        "color":"azul",
+        "imagen": "Pulsera/19.png"
     }
 ]
