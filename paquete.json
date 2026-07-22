@@ -26,5 +26,33 @@
         "precio": 3500,
         "descripcion": "2 bonobones + 1 pulsera",
         "imagen": "./paquete/4.png"
+    },
+    {
+        "id": 105,
+        "nombre": "Combo especial",
+        "precio": 4000,
+        "descripcion": "2 pulseras",
+        "imagen": "./paquete/5.png"
+    },
+    {
+        "id": 106,
+        "nombre": "Combo especial",
+        "precio": 4000,
+        "descripcion": "2 pulseras",
+        "imagen": "./paquete/6.png"
+    },
+    {
+        "id": 107,
+        "nombre": "Combo especial",
+        "precio": 4000,
+        "descripcion": "2 pulseras",
+        "imagen": "./paquete/7.png"
+    },
+    {
+        "id": 108,
+        "nombre": "Combo especial",
+        "precio": 4000,
+        "descripcion": "2 pulseras",
+        "imagen": "./paquete/8.png"
     }
 ]
